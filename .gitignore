@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.test-build/
+.tools/
+artifacts/
+public/haneul/
+public/reference/haneul.jsdos
+public/generated/

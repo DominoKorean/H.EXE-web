@@ -1,0 +1,45 @@
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000}body{display:grid;place-items:center;color:#fff;font:16px monospace}
+#stage{position:relative;width:min(100vw,133.333333vh);aspect-ratio:4/3;user-select:none;overflow:hidden;container-type:inline-size}
+#screen{width:100%;height:100%;display:block;image-rendering:pixelated;outline:none;cursor:crosshair;touch-action:none}
+#controls,#fields{position:absolute;inset:0;pointer-events:none}
+#controls button{position:absolute;pointer-events:auto;border:0;padding:0;background:transparent;cursor:default;color:transparent}
+#controls button:focus-visible{outline:1px dotted #000;outline-offset:-4px;background:#ffffff20}
+#fields input,#fields select,#fields textarea{position:absolute;pointer-events:auto;min-width:0;border:2px inset #ddd;border-radius:0;background:#fff;color:#000;font:2.5cqw monospace;padding:0 3px;outline:none}
+#fields textarea{resize:none;line-height:1.3}#fields input:focus,#fields textarea:focus,#fields select:focus{outline:1px solid #5555ff}
+#ime{position:absolute;left:15%;top:8%;width:1px;height:16px;opacity:0;pointer-events:none}
+#loading{position:fixed;inset:auto;text-align:center;background:#000;padding:20px;max-width:90vw}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+#browser-dialog {
+  width: min(420px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  padding: 22px 26px 24px;
+  border: 1px solid #d6dbe2;
+  border-radius: 18px;
+  color: #182332;
+  background: #fff;
+  box-shadow: 0 16px 64px #0005;
+  font: 15px/1.6 system-ui, sans-serif;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+#browser-dialog::backdrop { background: rgb(15 23 33 / 52%); }
+#browser-dialog header, #browser-dialog footer { display: flex; align-items: center; gap: 8px; }
+#browser-dialog header { justify-content: space-between; color: #526273; font-size: 13px; }
+#browser-dialog h1 { margin: 12px 0 6px; font-size: 23px; letter-spacing: -.04em; }
+#browser-dialog p { margin: 0; color: #455463; white-space: pre-line; }
+#browser-dialog footer { justify-content: flex-end; flex-wrap: wrap; margin-top: 24px; }
+#browser-dialog button { font: inherit; font-weight: 600; border: 0; border-radius: 8px; padding: 9px 15px; cursor: pointer; color: #263646; background: #edf1f5; }
+#browser-dialog button.primary { color: white; background: #225ba8; }
+#browser-dialog #browser-close { background: transparent; font: 22px/1 system-ui; padding: 4px 8px; }
+#browser-dialog button:hover { filter: brightness(.93); }
+#browser-dialog :focus-visible { outline: 2px solid #306cc1; outline-offset: 3px; }
+#browser-dialog textarea { width: 100%; margin-top: 12px; min-height: 9em; padding: 10px; font: inherit; border: 1px solid #8996a5; border-radius: 8px; }
+#print-sheet { display: none; }
+#storage-notice:not([hidden]) { position: fixed; bottom: 16px; right: 16px; max-width: min(440px, 90vw); padding: 12px 16px; display: flex; align-items: center; gap: 12px; background: #fff; border-radius: 12px; color: #243342; box-shadow: 0 4px 24px #0005; font: 14px/1.5 system-ui, sans-serif; }
+#storage-notice button { flex: none; color: #225ba8; background: transparent; border: 0; font: inherit; cursor: pointer; }
+@media print {
+  html, body { display: block; height: auto; overflow: visible; background: white; }
+  body > :not(#print-sheet), dialog::backdrop { display: none !important; }
+  #print-sheet { display: block; }
+  #print-sheet canvas { display: block; max-width: 100%; max-height: 98vh; object-fit: contain; image-rendering: pixelated; }
+}
